@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
+import { Link } from 'react-router';
 
 /*
     Component Rendered => Query Issued => Query Complete => Rerender Component
@@ -33,6 +34,11 @@ class SongList extends Component {
 
     return (
       <div>
+        <Link
+          to="/songs/new"
+        >
+          Create
+        </Link>
         <ul className="collection">
           {this.renderSongs()}
         </ul>
