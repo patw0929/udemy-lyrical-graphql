@@ -3,6 +3,8 @@ import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import { Link, hashHistory } from 'react-router';
 
+import query from '../queries/fetchSongs';
+
 const mutation = gql`
   mutation AddSong($title: String) {
     addSong(title: $title) {
@@ -31,6 +33,9 @@ class SongCreate extends Component {
       variables: {
         title: this.state.title,
       },
+      refetchQueries: [{
+        query,
+      }],
     }).then(() => hashHistory.push('/'));
   };
 
